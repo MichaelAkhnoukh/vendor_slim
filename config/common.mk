@@ -19,9 +19,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.debug.alloc=0
 
 # Default sounds
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.config.ringtone=Titania.ogg \
-    ro.config.notification_sound=Tethys.ogg
+PRODUCT_PROPERTY_OVERRIDES += \\
+    ro.config.notification_sound=Argon.ogg \
+    ro.config.alarm_alert=Hassium.ogg
 
 # Backup Tool
 PRODUCT_COPY_FILES += \
@@ -154,7 +154,7 @@ PRODUCT_PACKAGE_OVERLAYS += \
 # Slim version.
 PRODUCT_VERSION_MAJOR = $(PLATFORM_VERSION)
 PRODUCT_VERSION_MINOR = build
-PRODUCT_VERSION_MAINTENANCE = 0.28
+PRODUCT_VERSION_MAINTENANCE = 1.3
 ifdef SLIM_BUILD_EXTRA
     SLIM_POSTFIX := -$(SLIM_BUILD_EXTRA)
 endif
@@ -182,6 +182,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.slim.buildtype=$(SLIM_BUILD_TYPE)
 
 EXTENDED_POST_PROCESS_PROPS := vendor/slim/tools/slim_process_props.py
+
+PRODUCT_EXTRA_RECOVERY_KEYS += \
+  vendor/slim/build/target/product/security/slim
+
+-include vendor/slim-priv/keys/keys.mk
 
 ifeq ($(BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE),)
   ADDITIONAL_DEFAULT_PROPERTIES += \
